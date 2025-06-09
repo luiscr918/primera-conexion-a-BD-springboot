@@ -19,4 +19,8 @@ public class Libro {
      private String paginas;
      private Double precio;
 
+    @ManyToOne
+    @JoinColumn(name = "codigo_autor")
+    private Autor autor;
+
 }
