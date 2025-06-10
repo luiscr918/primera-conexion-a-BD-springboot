@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Libros") //el table solo se pone si quiero ponerle otro nombre a la tabla
 @Data
@@ -23,4 +25,11 @@ public class Libro {
     @JoinColumn(name = "codigo_autor")
     private Autor autor;
 
+    @ManyToOne
+    @JoinColumn(name = "codigo_genero")
+    private Genero genero;
+    @OneToMany(mappedBy = "libro", fetch = FetchType.LAZY) //solo cuando de click en la opcion libro va a traer datos
+    private List<Prestamo> prestamos;
+
 }
+

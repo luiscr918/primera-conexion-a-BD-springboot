@@ -1,9 +1,6 @@
 package com.itsqmet.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,4 +15,10 @@ public class Prestamo {
     private long id;
     private Date fecha_prestamo;
     private Date fecha_devolucion;
+    @ManyToOne
+    @JoinColumn(name = "codigo_libro")
+    private Libro libro;
+    @ManyToOne
+    @JoinColumn(name ="codigo_usuario")
+    private Usuario usuario;
 }
