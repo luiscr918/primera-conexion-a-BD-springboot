@@ -33,6 +33,7 @@
             <td th:text="${autor.nacionalidad}"></td>
             <td th:text="${autor.fechaNacimiento}"></td>
             <td>
+                <a th:href="@{/libros-autor/} + ${autor.id}" class="btn btn-actualizar">Ver libros</a>
                 <a th:href="@{/editar-autor/} + ${autor.id}" class="btn btn-actualizar">Actualizar</a>
                 <a th:href="@{/eliminar-autor/} + ${autor.id}" class="btn btn-eliminar">Eliminar</a>
             </td>

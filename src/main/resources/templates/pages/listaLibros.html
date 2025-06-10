@@ -24,6 +24,7 @@
             <th>Editorial</th>
             <th>Paginas</th>
             <th>Precio</th>
+            <th>Autor</th>
             <th>Opciones</th>
         </tr>
         </thead>
@@ -34,6 +35,7 @@
             <td th:text="${libro.editorial}"></td>
             <td th:text="${libro.paginas}"></td>
             <td th:text="${libro.precio}"></td>
+            <td th:text="${libro.autor.nombre}"></td>
             <td>
                 <a th:href="@{/editar-libro/} + ${libro.id}" class="btn btn-actualizar">Actualizar</a>
                 <a th:href="@{/eliminar-libro/} + ${libro.id}" class="btn btn-eliminar">Eliminar</a>

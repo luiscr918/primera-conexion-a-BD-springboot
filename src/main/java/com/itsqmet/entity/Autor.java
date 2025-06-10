@@ -22,7 +22,7 @@ public class Autor {
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date fechaNacimiento;
 
-    @OneToMany(mappedBy = "autor")
+    @OneToMany(mappedBy = "autor", fetch = FetchType.LAZY) //solo cuando de click en la opcion libro va a traer datos
     private List<Libro> libros;
 
 

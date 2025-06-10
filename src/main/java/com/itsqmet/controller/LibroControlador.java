@@ -1,6 +1,8 @@
 package com.itsqmet.controller;
 
+import com.itsqmet.entity.Autor;
 import com.itsqmet.entity.Libro;
+import com.itsqmet.service.AutorService;
 import com.itsqmet.service.LibroServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,9 @@ import java.util.Optional;
 public class LibroControlador {
     @Autowired
     private LibroServicio libroServicio;
+    //traer la lista de autores datos de la base
+    @Autowired
+    private AutorService autorService;
 
     //Leer los libros
     @GetMapping("/libros")
@@ -27,8 +32,9 @@ public class LibroControlador {
     //Insertar un Nuevo Libro
     @GetMapping("/formularioLibro")
     public String formularioLibro(Model model){
+        List<Autor> autores=autorService.mostrarAutor();
         model.addAttribute("libro", new Libro());
-
+        model.addAttribute("autores",autores);
         return "pages/formularioLibro";
     }
     @PostMapping("/guardar-libro")
@@ -41,6 +47,7 @@ public class LibroControlador {
     public String actualizarLibro(@PathVariable Long id, Model model){
         Optional<Libro> libro = libroServicio.buscarLibroId(id);
         model.addAttribute("libro", libro);
+        model.addAttribute("autores",autorService.mostrarAutor()); //es lo mismo que hice arriba pero sin declarar una lista
         return "pages/formularioLibro";
     }
     //Eliminar Libro

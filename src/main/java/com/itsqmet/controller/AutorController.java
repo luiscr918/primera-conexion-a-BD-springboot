@@ -3,6 +3,7 @@ package com.itsqmet.controller;
 import com.itsqmet.entity.Autor;
 import com.itsqmet.entity.Libro;
 import com.itsqmet.service.AutorService;
+import com.itsqmet.service.LibroServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,9 @@ import java.util.Optional;
 public class AutorController {
     @Autowired
     private AutorService autorService;
-
+//traer libros de autores
+    @Autowired
+    private LibroServicio libroServicio;
     //Leer los autores
     @GetMapping("/autores")
     public String listarAutores(@RequestParam (name="buscarAutor",required = false,defaultValue = "")
@@ -53,4 +56,14 @@ public class AutorController {
         autorService.eliminarAutor(id);
         return "redirect:/autores";
     }
+    //Buscar libros por autor
+    @GetMapping("/libros-autor/{id}")
+    public String obtenerLibrosPorAutor(@PathVariable Long id,Model model){
+        Autor autor=autorService.obtenerAutorConLibros(id);
+        List <Libro> librosAutor=libroServicio.buscarLibroAutor(autor.getId());
+        model.addAttribute("librosAutor",librosAutor);
+        model.addAttribute("autor",autor);
+        return "pages/listaAutorLibro";
+    }
+
 }
