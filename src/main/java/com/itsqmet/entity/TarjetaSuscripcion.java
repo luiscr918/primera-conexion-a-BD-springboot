@@ -12,7 +12,7 @@ public class TarjetaSuscripcion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "codigo_usuario", referencedColumnName = "id")
+    @JoinColumn(name = "codigo_usuario",unique = true, referencedColumnName = "id")
     private Usuario usuario;
 
 }

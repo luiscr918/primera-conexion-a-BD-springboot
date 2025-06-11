@@ -15,5 +15,5 @@ public class Genero {
     private long id;
     private String descripcion;
     @OneToMany(mappedBy = "genero", fetch = FetchType.LAZY)
-    List<Libro> libros;
+    private List<Libro> libros;
 }
