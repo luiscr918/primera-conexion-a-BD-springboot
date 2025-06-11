@@ -60,7 +60,7 @@ public class AutorController {
     @GetMapping("/libros-autor/{id}")
     public String obtenerLibrosPorAutor(@PathVariable Long id,Model model){
         Autor autor=autorService.obtenerAutorConLibros(id);
-        List <Libro> librosAutor=libroServicio.buscarLibroAutor(autor.getId());
+        List <Libro> librosAutor=autor.getLibros();
         model.addAttribute("librosAutor",librosAutor);
         model.addAttribute("autor",autor);
         return "pages/listaAutorLibro";
