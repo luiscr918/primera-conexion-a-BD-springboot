@@ -39,6 +39,15 @@
             </option>
         </select>
     </div>
+    <div class="mb-3">
+        <label for="genero" class="form-label">Genero</label>
+        <select id="genero" th:field="*{genero.id}">
+            <option th:each="genero:${generos}"
+                    th:value="${genero.id}"
+                    th:text="${genero.nombre}">
+            </option>
+        </select>
+    </div>
     <button type="submit" class="btn btn-guardar">Guardar</button>
 
 

@@ -13,6 +13,7 @@ public class Genero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    private String nombre;
     private String descripcion;
     @OneToMany(mappedBy = "genero", fetch = FetchType.LAZY)
     private List<Libro> libros;

@@ -14,5 +14,6 @@ public class TarjetaSuscripcion {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "codigo_usuario",unique = true, referencedColumnName = "id")
     private Usuario usuario;
+    private String tipo;
 
 }
