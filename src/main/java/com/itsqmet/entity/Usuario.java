@@ -22,4 +22,8 @@ public class Usuario {
     @OneToOne (mappedBy = "usuario")
     private TarjetaSuscripcion tarjetaSuscripcion;
 
+    private String email;
+    private String username;
+    private String password;
+
 }
