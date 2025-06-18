@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AdminController {
 
-    @GetMapping
+    @GetMapping("/home")
     public String mostrarPaginaAdmin(){
         return "pages/panelAdmin";
     }

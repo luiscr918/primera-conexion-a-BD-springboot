@@ -21,7 +21,7 @@ public class ConfiguracionSeguridad {
                         .requestMatchers("/formularioLibro","/guardar-libro").hasRole("ESTUDIANTE")
                         //ASIGNAR MISMA RUTA A MAS DE UN ROL
                         .requestMatchers("/libros").hasAnyRole("ESTUDIANTE","BIBLIOTECARIO")
-                        .requestMatchers("/admin").hasRole("ADMIN")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form->form

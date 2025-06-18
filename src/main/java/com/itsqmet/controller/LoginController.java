@@ -23,7 +23,7 @@ public class LoginController {
                 .findFirst()
                 .orElse("");
         if(role.equals("ROLE_ADMIN")){
-            return "redirect:/admin";
+            return "redirect:/admin/home";
         } else if (role.equals("ROLE_BIBLIOTECARIO")) {
             return "redirect:/autores";
         } else if (role.equals("ROLE_ESTUDIANTE")) {
