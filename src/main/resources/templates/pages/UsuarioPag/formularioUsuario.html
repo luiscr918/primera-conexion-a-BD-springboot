@@ -55,6 +55,15 @@
             <option value="BIBLIOTECARIO">Bibliotecario</option>
             <option value="ESTUDIANTE">Estudiante</option>
         </select>-->
+        <div class="mb-3">
+            <label for="roles" class="form-label">Roles</label>
+            <select id="roles" th:field="*{rol.id}">
+                <option th:each="rol:${roles}"
+                        th:value="${rol.id}"
+                        th:text="${rol.nombre}">
+                </option>
+            </select>
+        </div>
         <br>
         <br>
         <button type="submit" class="btn btn-guardar btn-lg text-white bg-primary border-0 rounded shadow-sm hover:bg-primary-dark focus:ring-2 focus:ring-primary">

@@ -29,6 +29,7 @@ public class UsuarioService {
         return  usuarioRepository.findById(id);
 
     }
+
     //Guardar usuario
     public  Usuario GuardarUsuario(Usuario usuario){
         //encripto

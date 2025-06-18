@@ -17,16 +17,21 @@ public class ConfiguracionSeguridad {
         http
                 .authorizeHttpRequests(auth ->auth
                         .requestMatchers("/","login","/formularioUsuario","/guardar-usuario","/css/**","/js/**").permitAll()
+                        .requestMatchers("/autores").hasRole("BIBLIOTECARIO")
+                        .requestMatchers("/formularioLibro","/guardar-libro").hasRole("ESTUDIANTE")
+                        //ASIGNAR MISMA RUTA A MAS DE UN ROL
+                        .requestMatchers("/libros").hasAnyRole("ESTUDIANTE","BIBLIOTECARIO")
+                        .requestMatchers("/admin").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form->form
                                 .loginPage("/login")
                                 .permitAll()
-                                .defaultSuccessUrl("/usuarios",true)
+                                .defaultSuccessUrl("/postLogin",true)
                         )
-                .logout(logut->logut
-                        .logoutUrl("/logut")
-                        .logoutSuccessUrl("/login?logut")
+                .logout(logout->logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login?logout")
                         .permitAll()
                 );
         return http.build();

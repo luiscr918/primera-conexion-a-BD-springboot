@@ -21,6 +21,10 @@ public class Usuario {
 
     @OneToOne (mappedBy = "usuario")
     private TarjetaSuscripcion tarjetaSuscripcion;
+//relacion de usuario con rol
+    @ManyToOne
+    @JoinColumn(name = "rol_id")
+    private Rol rol;
 
     private String email;
     private String username;

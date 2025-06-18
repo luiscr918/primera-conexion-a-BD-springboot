@@ -42,8 +42,9 @@
             <td th:text="${usuario.nombre}"  ></td>
             <td th:text="${usuario.email}" ></td>
             <td th:text="${usuario.username}" ></td>
+            <td th:text="${usuario.rol.nombre}" ></td>
             <td>
-                <a th:href="@{/editarUsuario/} + ${usuario.id}" class="btn btn-editar">Editar</a>
+                <a th:href="@{/editar-usuario/}    + ${usuario.id}" class="btn btn-editar">Editar</a>
                 <a th:href="@{/eliminarUsuario/} + ${usuario.id}" class="btn btn-eliminar">Eliminar</a>
 
             </td>

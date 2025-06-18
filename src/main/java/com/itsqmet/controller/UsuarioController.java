@@ -8,6 +8,7 @@ import com.itsqmet.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import com.itsqmet.service.RolServicio;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,8 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+    @Autowired
+    private RolServicio rolServicio;
 
 
     //listar usuarios
@@ -33,6 +36,7 @@ public class UsuarioController {
     @GetMapping("/formularioUsuario")
     public String formularioUsuario(Model model){
         model.addAttribute("usuario", new Usuario());
+        model.addAttribute("roles",rolServicio.mostrarRoles());
         return "pages/UsuarioPag/formularioUsuario";
     }
     @PostMapping("/guardar-usuario")
@@ -45,6 +49,7 @@ public class UsuarioController {
     public String actualizarUsuario(@PathVariable Long id, Model model){
         Optional<Usuario>usuario  = usuarioService.buscarUsuarioId(id);
         model.addAttribute("usuario",usuario);
+        model.addAttribute("roles",rolServicio.mostrarRoles());
         return "pages/UsuarioPag/formularioUsuario";
     }
     //Eliminar Usuario
@@ -53,6 +58,7 @@ public class UsuarioController {
         usuarioService.eliminarUsuario(id);
         return "redirect:/usuarios";
     }
+
 
 
 
